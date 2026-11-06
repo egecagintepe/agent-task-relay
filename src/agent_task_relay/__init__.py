@@ -5,8 +5,8 @@ for coordinating software engineering tasks between chat assistants and coding a
 """
 
 __version__ = "0.2.0"
-__author__ = "Agent Task Relay Contributors"
-__license__ = "MIT"
+__author__ = "Ege Çağın Tepe"
+__license__ = "PolyForm Internal Use License 1.0.0"
 
 from agent_task_relay.protocol.models import TaskPacket, TaskState, StateRecord, RunnerResult
 from agent_task_relay.config import RelayConfig, load_config

@@ -1,14 +1,23 @@
-# Contribution & Maintenance Policy
+# Repository Governance and Usage Policy
 
-**Agent Task Relay** is an open-source tool created and maintained directly by **Ege Çağın Tepe** ([@egecagintepe](https://github.com/egecagintepe)).
+**Agent Task Relay** is a free-to-use, source-available developer tool created, copyrighted, and maintained by **Ege Çağın Tepe** ([@egecagintepe](https://github.com/egecagintepe)).
 
-## Project Governance & Contribution Model
+## Licensing Model: Source-Available (PolyForm Internal Use 1.0.0)
 
-To maintain architectural focus, stability, and security standards:
+This project is released under the **[PolyForm Internal Use License 1.0.0](LICENSE)**.
 
-- **Usage & Adoption:** Anyone is welcome and encouraged to clone this repository, install the Agent Skill, and use the relay in their personal or professional development workflows under the terms of the MIT License.
-- **External Contributions:** This repository is **not currently accepting external pull requests or code contributions**.
-- **Issues & Feedback:** If you encounter bugs, have questions, or would like to suggest features, please feel free to open a GitHub Issue using our issue templates.
-- **Forks:** In accordance with the MIT License, you are free to fork this project and adapt it for your own independent use.
+Under this license:
+- **Free for Internal Use:** Individuals, developers, and organizations may freely download, install, run, and privately modify this software for their own internal development and operations.
+- **Private Customization:** You are permitted to customize and adapt your local installation to your own internal workflows and agent configurations.
+- **No Commercial Redistribution:** You may not redistribute, repackage, rebrand, sublicense, or resell this software to third parties, nor host it as a managed public service.
+- **No Derivative Publication:** You may not publish derivative distributions or public forks without explicit written permission from the copyright holder.
 
-Thank you for your interest and support!
+## External Contributions and Pull Requests
+
+To preserve the architectural integrity, security posture, and licensing model of this project:
+
+- **No External Code Contributions:** This repository does **not** accept external pull requests or code contributions.
+- **Pull Requests Disabled:** The repository owner may disable Pull Requests entirely in GitHub repository settings. Any unsolicited pull requests will be closed without review.
+- **Issues and Feedback:** Issue reporting remains open at the owner's discretion for reporting reproducible bugs, requesting troubleshooting assistance, or proposing runner adapter specifications via our [Issue Templates](.github/ISSUE_TEMPLATE/).
+
+Thank you for respecting the project governance and licensing terms.

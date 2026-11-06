@@ -8,10 +8,10 @@
 
 [![CI](https://github.com/egecagintepe/agent-task-relay/actions/workflows/ci.yml/badge.svg)](https://github.com/egecagintepe/agent-task-relay/actions/workflows/ci.yml)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: PolyForm Internal Use 1.0.0](https://img.shields.io/badge/License-PolyForm%20Internal%20Use%201.0.0-purple.svg)](LICENSE)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Compatible-emerald.svg)](https://agentskills.io)
 
-Open-source agent skill and local task relay connecting AI chats to coding agents through Git.  
+Free-to-use, source-available agent skill and local task relay connecting AI chats to coding agents through Git.  
 **No copy-paste. No required chat API.**
 
 [Quickstart](#-quickstart-in-5-minutes) · [ChatGPT Setup Guide](#-chatgpt-quickstart) · [Workflow](#-how-it-works) · [Runners](#-supported-runners) · [Security](#-security-first) · [Türkçe Rehber](docs/README.tr.md)
@@ -289,15 +289,17 @@ Read our complete [Security Policy & Threat Model](SECURITY.md).
 
 ---
 
-## 🤝 Project Governance
+## 🤝 Project Governance & Usage Policy
 
-**Agent Task Relay** is an open-source project created and maintained directly by **Ege Çağın Tepe** ([@egecagintepe](https://github.com/egecagintepe)).
+**Agent Task Relay** is a free-to-use, source-available developer tool created, copyrighted, and maintained by **Ege Çağın Tepe** ([@egecagintepe](https://github.com/egecagintepe)).
 
-- **Usage:** Free to use, fork, and install under the [MIT License](LICENSE).
-- **Contributions:** This repository is maintained as an author-curated project and is not currently accepting external pull requests. Feedback, bug reports, and runner adapter proposals are welcome via [GitHub Issues](https://github.com/egecagintepe/agent-task-relay/issues).
+- **Permitted Usage:** You are free to download, install, run, and privately modify this software for personal or internal business workflows under the [PolyForm Internal Use License 1.0.0](LICENSE).
+- **Redistribution Prohibited:** Unauthorized redistribution, repackaging, rebranding, sublicensing, or resale is strictly prohibited.
+- **Contributions & Pull Requests:** This repository does not accept external pull requests or code contributions. Pull requests may be disabled in repository settings. Bug reports and adapter feedback may be submitted via [GitHub Issues](https://github.com/egecagintepe/agent-task-relay/issues).
 
 ---
 
 ## 📄 License
 
-Distributed under the MIT License. See [LICENSE](LICENSE) for details.
+Licensed under the **PolyForm Internal Use License 1.0.0**. See the [LICENSE](LICENSE) file for complete legal terms.
+Copyright 2026 Ege Çağın Tepe. All rights reserved.

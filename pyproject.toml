@@ -8,14 +8,13 @@ version = "0.2.0"
 description = "Bridge any AI chat to any coding agent via Git."
 readme = "README.md"
 authors = [
-    { name = "Agent Task Relay Contributors" }
+    { name = "Ege Çağın Tepe", email = "egecagintepe@gmail.com" }
 ]
-license = { text = "MIT" }
+license = { text = "PolyForm Internal Use License 1.0.0" }
 requires-python = ">=3.10"
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",

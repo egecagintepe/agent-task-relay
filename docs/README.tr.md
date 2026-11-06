@@ -4,7 +4,7 @@
 
 **Yapay zeka sohbetiniz planlar. Kodlama ajanınız inşa eder. Agent Task Relay onları bağlar.**
 
-Git tabanlı, satıcıdan bağımsız açık kaynaklı ajan yeteneği (Agent Skill) ve yerel görev aktarıcısı.  
+Git tabanlı, satıcıdan bağımsız, ücretsiz ve kaynak kodu erişilebilir (source-available) ajan yeteneği (Agent Skill) ve yerel görev aktarıcısı.  
 Kopyala-yapıştır zahmeti yok. Relay için zorunlu sohbet API'si yok.
 
 [Hızlı Başlangıç](#hızlı-başlangıç) · [Çalışma Modları](#dört-çalışma-modu) · [Desteklenen Ajanlar](#desteklenen-ajanlar) · [Güvenlik](#güvenlik-ve-gizlilik) · [English README](../README.md)
@@ -105,3 +105,13 @@ agent-task-relay status
 - **SHA-256 Kriptografik Onay:** Bir görevi onayladıktan sonra dosya değiştirilirse onay geçersiz kılınır ve görev çalıştırılmaz.
 - **Sır Temizleme (Redaction):** API anahtarları, GitHub tokenları, şifreler ve özel anahtarlar outbox raporuna yazılmadan önce otomatik temizlenir.
 - **İzin İhlallerini Durdurma:** Hiçbir görev dosyası kendi kendine üretim sunucusuna dağıtım (deploy), veritabanı silme veya yetki yükseltme izni veremez.
+
+---
+
+## 🤝 Proje Yönetimi ve Lisans
+
+**Agent Task Relay**, **Ege Çağın Tepe** ([@egecagintepe](https://github.com/egecagintepe)) tarafından geliştirilmiş ve telif hakları saklı tutulan, ücretsiz kullanıma açık kaynak erişimli (source-available) bir geliştirici aracıdır.
+
+- **İzin Verilen Kullanım:** Yazılımı kişisel veya kurum içi operasyonlarınız için ücretsiz olarak indirebilir, kurabilir, çalıştırabilir ve özel olarak değiştirebilirsiniz ([PolyForm Internal Use License 1.0.0](../LICENSE)).
+- **Yeniden Dağıtım Yasağı:** Yazılımın üçüncü taraflara yetkisiz olarak yeniden dağıtılması, paketlenmesi, satılması veya ticari bir hizmet olarak barındırılması yasaktır.
+- **Katkılar ve Pull Request'ler:** Depo harici kod katkılarına veya genel Pull Request'lere kapalıdır. Hata bildirimleri ve geri bildirimler GitHub Issues üzerinden iletilebilir.

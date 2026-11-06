@@ -1,7 +1,7 @@
 ---
 name: agent-task-relay
-description: Open-source agent skill and local task relay connecting AI chats to coding agents through Git. Bridges ChatGPT, Claude, Gemini to local CLI agents (Antigravity, Claude Code, OpenCode, Codex, custom) using a private Git inbox/outbox. Use when connecting conversational AI to coding agents, orchestrating tasks via Git, or validating agent task handoffs. Never auto-enable execution without explicit human approval.
-license: MIT
+description: Free-to-use, source-available agent skill and local task relay connecting AI chats to coding agents through Git. Bridges ChatGPT, Claude, Gemini to local CLI agents (Antigravity, Claude Code, OpenCode, Codex, custom) using a private Git inbox/outbox. Use when connecting conversational AI to coding agents, orchestrating tasks via Git, or validating agent task handoffs. Never auto-enable execution without explicit human approval.
+license: PolyForm-Internal-Use-1.0.0
 compatibility: Python 3.10+, Git, private Git repository
 metadata:
   version: "0.2.0"

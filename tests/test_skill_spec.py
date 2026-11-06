@@ -22,7 +22,7 @@ class TestSkillSpecification(unittest.TestCase):
         frontmatter = parts[1]
         self.assertIn("name: agent-task-relay", frontmatter)
         self.assertIn("description:", frontmatter)
-        self.assertIn("license: MIT", frontmatter)
+        self.assertIn("license: PolyForm-Internal-Use-1.0.0", frontmatter)
         self.assertIn("compatibility:", frontmatter)
 
     def test_referenced_documents_exist(self):
