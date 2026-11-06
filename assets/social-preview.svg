@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="boxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="640" fill="url(#bgGrad)"/>
+
+  <!-- Subtle grid pattern -->
+  <g stroke="#1e293b" stroke-width="1" stroke-opacity="0.3">
+    <line x1="80" y1="0" x2="80" y2="640"/>
+    <line x1="200" y1="0" x2="200" y2="640"/>
+    <line x1="320" y1="0" x2="320" y2="640"/>
+    <line x1="440" y1="0" x2="440" y2="640"/>
+    <line x1="560" y1="0" x2="560" y2="640"/>
+    <line x1="680" y1="0" x2="680" y2="640"/>
+    <line x1="800" y1="0" x2="800" y2="640"/>
+    <line x1="920" y1="0" x2="920" y2="640"/>
+    <line x1="1040" y1="0" x2="1040" y2="640"/>
+    <line x1="1160" y1="0" x2="1160" y2="640"/>
+    <line x1="0" y1="100" x2="1280" y2="100"/>
+    <line x1="0" y1="220" x2="1280" y2="220"/>
+    <line x1="0" y1="340" x2="1280" y2="340"/>
+    <line x1="0" y1="460" x2="1280" y2="460"/>
+    <line x1="0" y1="580" x2="1280" y2="580"/>
+  </g>
+
+  <!-- Ambient glow -->
+  <circle cx="280" cy="220" r="180" fill="#2563eb" fill-opacity="0.15" filter="blur(60px)"/>
+  <circle cx="1000" cy="400" r="180" fill="#10b981" fill-opacity="0.12" filter="blur(60px)"/>
+
+  <!-- Logo Mark -->
+  <g transform="translate(100, 90)">
+    <rect x="0" y="0" width="80" height="80" rx="20" fill="#0f172a" stroke="#334155" stroke-width="2" filter="url(#cardShadow)"/>
+    <path d="M 18 56 C 18 34, 62 34, 62 56" fill="none" stroke="url(#accentGrad)" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="22" cy="54" r="7" fill="#0f172a" stroke="#38bdf8" stroke-width="3"/>
+    <circle cx="58" cy="54" r="7" fill="#0f172a" stroke="#34d399" stroke-width="3"/>
+    <rect x="28" y="20" width="24" height="20" rx="4" fill="#1e293b" stroke="#f8fafc" stroke-width="1.5"/>
+    <path d="M 30 22 L 40 31 L 50 22" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Title & Category Badge -->
+  <g transform="translate(205, 115)">
+    <rect x="0" y="-12" width="130" height="26" rx="13" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="65" y="5" text-anchor="middle" fill="#38bdf8" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="11" font-weight="700" letter-spacing="1">AGENT SKILL</text>
+  </g>
+
+  <text x="100" y="240" fill="#ffffff" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,sans-serif" font-size="52" font-weight="800" letter-spacing="-1">Agent Task Relay</text>
+
+  <!-- Tagline & Value Prop -->
+  <text x="100" y="300" fill="#94a3b8" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="24" font-weight="500">
+    Bridge any AI chat to any coding agent through Git.
+  </text>
+  <text x="100" y="340" fill="#38bdf8" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="20" font-weight="600">
+    Your AI chat plans. Your coding agent builds.
+  </text>
+
+  <!-- Three Feature Cards -->
+  <g transform="translate(100, 400)">
+    <!-- Card 1 -->
+    <rect x="0" y="0" width="330" height="150" rx="12" fill="url(#boxGrad)" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow)"/>
+    <text x="24" y="44" fill="#38bdf8" font-family="-apple-system,sans-serif" font-size="22">🚫 📋</text>
+    <text x="24" y="80" fill="#f8fafc" font-family="-apple-system,sans-serif" font-size="18" font-weight="700">No Copy-Paste</text>
+    <text x="24" y="112" fill="#94a3b8" font-family="-apple-system,sans-serif" font-size="13" line-height="1.4">Durable handoff via private Git inbox &amp; outbox reports.</text>
+
+    <!-- Card 2 -->
+    <rect x="360" y="0" width="330" height="150" rx="12" fill="url(#boxGrad)" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow)"/>
+    <text x="384" y="44" fill="#34d399" font-family="-apple-system,sans-serif" font-size="22">⚡ 🔑</text>
+    <text x="384" y="80" fill="#f8fafc" font-family="-apple-system,sans-serif" font-size="18" font-weight="700">No Required LLM API</text>
+    <text x="384" y="112" fill="#94a3b8" font-family="-apple-system,sans-serif" font-size="13">Zero relay tokens. Reuse your existing AI chat subscription.</text>
+
+    <!-- Card 3 -->
+    <rect x="720" y="0" width="360" height="150" rx="12" fill="url(#boxGrad)" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow)"/>
+    <text x="744" y="44" fill="#818cf8" font-family="-apple-system,sans-serif" font-size="22">🛡️ 🔒</text>
+    <text x="744" y="80" fill="#f8fafc" font-family="-apple-system,sans-serif" font-size="18" font-weight="700">Content-Bound Approvals</text>
+    <text x="744" y="112" fill="#94a3b8" font-family="-apple-system,sans-serif" font-size="13">Cryptographic SHA-256 bindings, secret redactions &amp; locks.</text>
+  </g>
+</svg>

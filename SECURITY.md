@@ -23,6 +23,11 @@ Agent Task Relay is built on the explicit security posture that **all incoming M
 - **Separation of Workspace and Bridge:** Bridge repositories and workspace code directories must be separate directories. Neither may be nested inside the other.
 - **No Silent Re-execution:** A task that was previously claimed but whose process crashed or terminated is never silently re-run.
 
+### Important Security Limitations:
+- **Workspace Isolation Reality:** The relay launches runner processes with the target workspace as their working directory (`cwd`). Setting `cwd` alone does **not** create an OS-level sandbox, container boundary, or filesystem virtualization. A coding agent with tool execution privileges could theoretically access or modify files outside the workspace unless additional OS-level sandboxing (such as Windows Sandbox, Docker, or firejail) is configured by the operator.
+- **Defense-in-Depth Secret Redaction:** Report scrubbing uses regex pattern matching to remove common credentials (GitHub tokens, OpenAI/Anthropic/Google keys, AWS access keys, Slack tokens, private keys, passwords). Regex redaction is **not** a mathematical guarantee of zero secret leakage for arbitrary bespoke secret formats. Sensitive files should never be accessible to coding agent runners.
+- **Raw Logs Stay Strictly Local:** Full, unredacted stdout/stderr output from coding agent CLIs is saved to `.agent-task-relay/logs/` and excluded from Git commits via `.gitignore`. Never share or commit local log files.
+
 ### Non-Negotiable Human Escalation:
 No task file may grant itself permission to:
 - Deploy software to staging or production environments.

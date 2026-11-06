@@ -4,17 +4,19 @@ Agent Task Relay connects two distinct classes of AI tools: **Conversational Cha
 
 ## 1. Chat Assistant Capabilities (Chat-Side)
 
-Conversational chat assistants create tasks and review reports. Their capabilities depend on their platform integrations and connectors:
+Conversational chat assistants create tasks and review reports. Their capabilities depend on the user's specific account tier, connector scopes, and platform permissions:
 
-| Chat Provider | GitHub Read Access | GitHub Write Access | Scheduled Tasks | Status / Notes |
+| Chat Provider | GitHub Read Access | GitHub Write Access | Scheduled Task Checks | Integration Status & Notes |
 | --- | --- | --- | --- | --- |
-| **ChatGPT (Plus/Team/Pro)** | Verified (via Connector) | Verified (via Connector) | Verified (Min 1-hour interval) | Primary onboarding example. Reads `outbox/`, writes `inbox/`. |
-| **Claude (Anthropic Web/App)**| Verified (via Integrations)| Verified (via Integrations)| Unverified | Interactive chat mode works; scheduled reviews need client support. |
-| **Google Gemini (Advanced)** | Verified (via Workspace/Ext)| Unverified | Unverified | Read-only or manual copy-paste fallback recommended. |
-| **Any Custom Chat / Web UI** | Manual Fallback | Manual Fallback | N/A | Fully supported via Mode D (Manual Fallback). |
+| **ChatGPT (Plus/Team/Pro)** | Verified (with GitHub connector) | Account-Dependent (requires write scope) | Read-only verified (min 1-hour interval) | Primary onboarding example. Interactive write works if write permission is granted. Scheduled writes are **unverified/untested**. |
+| **Claude (Anthropic Web/App)**| Verified (via GitHub integration)| Account-Dependent (integration scopes) | Unverified (not natively scheduled) | Interactive chat mode works; scheduled execution requires external scheduling. |
+| **Google Gemini (Advanced)** | Account-Dependent (Extensions)| Unverified | Unverified | Read-only or manual copy-paste fallback (Mode D) recommended. |
+| **Any Custom Chat / Web UI** | Manual Fallback | Manual Fallback | Manual / External | 100% compatible via Mode D (Manual Fallback). |
 
-> [!NOTE]
-> **Read-only vs. Read/Write:** If a chat assistant has only read-only access to your GitHub repository, it can inspect completed reports in `outbox/`, but cannot automatically write new tasks. In this case, use Mode D (Manual Fallback): the assistant generates the Markdown in chat, and you commit it to `inbox/`.
+> [!IMPORTANT]
+> **Read-only vs. Read/Write Reality:**
+> - If your chat assistant's GitHub integration has only read access, it can read completed reports from `outbox/`, but cannot commit new tasks to `inbox/`. Use **Mode D (Manual Fallback)**: the assistant outputs the task Markdown in chat, and you commit it into `inbox/`.
+> - **Scheduled Tasks Do Not Imply Autonomous Writing:** Successfully committing a task in a live, interactive chat session does **not** prove that a background scheduled task can write or refresh tokens unattended. Always verify connector permissions in your own environment.
 
 ---
 
@@ -28,9 +30,9 @@ Coding agents run locally on your machine, read the task packet, write code in t
 | **Custom Command** | `custom` | **Verified** | Configured allowlist array | User-managed local executables |
 | **Google Antigravity CLI** | `agy` | **Experimental** | `agy -p <prompt> --output-format json` | Requires interactive `agy` login on host |
 | **Anthropic Claude Code** | `claude` | **Experimental** | `claude -p <prompt>` | Requires Anthropic authentication |
-| **Google Gemini CLI** | `gemini` | **Experimental** | `gemini code --prompt <prompt>` | Requires Google Cloud/Gemini auth |
-| **OpenAI Codex CLI** | `codex` | **Contract** | `codex exec --task-file <file>` | Documented integration contract |
-| **OpenCode** | `opencode` | **Contract** | `opencode run --instruction-file <file>` | Documented integration contract |
+| **Google Gemini CLI** | `gemini` | **Experimental** | `gemini -p <prompt>` | Requires Google Cloud/Gemini auth |
+| **OpenAI Codex CLI** | `codex` | **Contract** | `codex exec <prompt>` | Documented integration contract |
+| **OpenCode** | `opencode` | **Contract** | `opencode run <prompt>` | Documented integration contract |
 | **Local Agent Harness** | `local` | **Contract** | Custom local agent wrapper | Requires agent harness with tools & fs |
 
 ### Support Tiers Defined

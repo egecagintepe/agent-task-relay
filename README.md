@@ -1,6 +1,8 @@
 <div align="center">
 
-# 📬 Agent Task Relay
+<img src="assets/icon.svg" alt="Agent Task Relay Icon" width="68" height="68" />
+
+# Agent Task Relay
 
 **Bridge any AI chat to any coding agent.**
 
@@ -88,10 +90,15 @@ git clone git@github.com:<YOUR_USERNAME>/my-agent-bridge.git C:/Dev/my-agent-bri
 > Keep your task bridge repository **private** and strictly isolated from your code repository. Real tasks and reports should never be committed to a public repository.
 
 ### 2. Install Agent Task Relay
+Install directly from the GitHub repository:
 ```bash
-pip install agent-task-relay
-# or using pipx:
-pipx install agent-task-relay
+pip install git+https://github.com/egecagintepe/agent-task-relay.git
+```
+Or clone and install locally:
+```bash
+git clone https://github.com/egecagintepe/agent-task-relay.git
+cd agent-task-relay
+pip install .
 ```
 
 ### 3. Initialize Your Project Workspace
@@ -113,6 +120,10 @@ agent-task-relay ping
 agent-task-relay once
 ```
 Check `C:/Dev/my-agent-bridge/outbox/` for the completed handshake report!
+
+<div align="center">
+  <img src="assets/terminal-demo.svg" alt="Agent Task Relay Mock Handshake Terminal Demo" width="850" />
+</div>
 
 ---
 
@@ -170,16 +181,16 @@ For Claude or Gemini, see the ready-to-use prompts in [`prompts/chat/`](prompts/
 
 Agent Task Relay decouples task transport from coding agent execution. Multiple runners are supported across three tiers:
 
-| Runner | ID | Support Tier | Description | Command |
+| Runner | ID | Support Tier | Verification Status | Command Invocation |
 | --- | --- | --- | --- | --- |
-| **Mock Runner** | `mock` | **Verified** | Deterministic handshake, zero tokens | Internal Python |
-| **Custom Command** | `custom` | **Verified** | Sandboxed CLI execution with allowlist | Configured array |
-| **Google Antigravity** | `agy` | **Experimental** | Google Antigravity CLI | `agy -p <prompt> --output-format json` |
-| **Anthropic Claude Code** | `claude` | **Experimental** | Anthropic Claude Code CLI | `claude -p <prompt>` |
-| **Google Gemini CLI** | `gemini` | **Experimental** | Google Gemini CLI | `gemini code --prompt <prompt>` |
-| **OpenAI Codex CLI** | `codex` | **Contract** | Documented contract harness | `codex exec --task-file <file>` |
-| **OpenCode** | `opencode` | **Contract** | OpenCode terminal agent | `opencode run --instruction-file <file>` |
-| **Local Agent Harness** | `local` | **Contract** | Local harness (e.g. Ollama wrapper) | Agent harness with tools & fs |
+| **Mock Runner** | `mock` | **Verified** | Verified Live (Zero Tokens) | Deterministic internal Python logic |
+| **Custom Command** | `custom` | **Verified** | Verified Live (Subprocess) | Configured allowlist array & timeout |
+| **Google Antigravity** | `agy` | **Experimental** | Tested with realistic stub binary | `agy -p <prompt> --output-format json` |
+| **Anthropic Claude Code** | `claude` | **Experimental** | Documented CLI specification | `claude -p <prompt>` |
+| **Google Gemini CLI** | `gemini` | **Experimental** | Documented CLI specification | `gemini -p <prompt>` |
+| **OpenAI Codex CLI** | `codex` | **Contract** | Documented contract interface | `codex exec <prompt>` |
+| **OpenCode** | `opencode` | **Contract** | Documented contract interface | `opencode run <prompt>` |
+| **Local Agent Harness** | `local` | **Contract** | Documented contract interface | External agent wrapper with filesystem & tools |
 
 > [!IMPORTANT]
 > **A local LLM is not an agent:** A raw local model endpoint (such as bare `ollama run mistral`) is a text generator, not a coding agent. It requires an agent harness capable of reading files, modifying code, and using permitted tools.

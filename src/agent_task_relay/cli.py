@@ -78,14 +78,15 @@ def init_cmd(args: argparse.Namespace) -> None:
     # Create bridge folders and .gitkeep files
     bridge.ensure_folders()
 
-    # Copy skill into workspace if requested or default
-    skill_src = Path(__file__).resolve().parent.parent.parent / "skills" / "agent-task-relay"
+    # Copy skill into workspace from packaged bundle or repo fallback
+    pkg_skill = Path(__file__).resolve().parent / "packaged_skill"
+    repo_skill = Path(__file__).resolve().parents[2] / "skills" / "agent-task-relay"
+    skill_src = pkg_skill if pkg_skill.is_dir() else (repo_skill if repo_skill.is_dir() else None)
     skill_dst = workspace / ".agents" / "skills" / "agent-task-relay"
-    if skill_src.is_dir():
-        if not skill_dst.exists():
-            skill_dst.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copytree(skill_src, skill_dst)
-            print(f"Installed Agent Skill: {skill_dst}")
+    if skill_src and not skill_dst.exists():
+        skill_dst.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copytree(skill_src, skill_dst)
+        print(f"Installed Agent Skill: {skill_dst}")
 
     # Write initial config
     cfg = RelayConfig(

@@ -60,8 +60,15 @@ git clone git@github.com:kullanici/ajans-koprusu.git C:/Dev/ajans-koprusu
 ```
 
 ### 2. Kurulum
+Doğrudan GitHub deposundan kurun:
 ```bash
-pip install agent-task-relay
+pip install git+https://github.com/egecagintepe/agent-task-relay.git
+```
+Veya depoyu klonlayıp yerel kurun:
+```bash
+git clone https://github.com/egecagintepe/agent-task-relay.git
+cd agent-task-relay
+pip install .
 ```
 
 ### 3. Projenizi ve Köprüyü Başlatın

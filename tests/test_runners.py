@@ -95,6 +95,21 @@ class TestRunners(unittest.TestCase):
         self.assertIsInstance(mock_r, MockRunner)
         self.assertEqual(mock_r.tier, "verified")
 
+    def test_gemini_runner_availability_and_prompt_construction(self):
+        gemini_r = get_runner("gemini")
+        self.assertEqual(gemini_r.name, "gemini")
+        self.assertEqual(gemini_r.tier, "experimental")
+
+    def test_codex_runner_contract(self):
+        codex_r = get_runner("codex")
+        self.assertEqual(codex_r.name, "codex")
+        self.assertEqual(codex_r.tier, "contract")
+
+    def test_opencode_runner_contract(self):
+        opencode_r = get_runner("opencode")
+        self.assertEqual(opencode_r.name, "opencode")
+        self.assertEqual(opencode_r.tier, "contract")
+
 
 if __name__ == "__main__":
     unittest.main()

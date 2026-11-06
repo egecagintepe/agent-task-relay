@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <filter id="iconShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <!-- Background squircle -->
+  <rect x="8" y="8" width="112" height="112" rx="28" fill="#0f172a" stroke="#1e293b" stroke-width="2" filter="url(#iconShadow)"/>
+  
+  <!-- Bridge arch node -->
+  <path d="M 28 88 C 28 52, 100 52, 100 88" fill="none" stroke="url(#iconGrad)" stroke-width="7" stroke-linecap="round"/>
+  
+  <!-- Left node (chat) -->
+  <circle cx="34" cy="84" r="10" fill="#0f172a" stroke="#38bdf8" stroke-width="4"/>
+  <circle cx="34" cy="84" r="4" fill="#38bdf8"/>
+  
+  <!-- Right node (coding agent) -->
+  <circle cx="94" cy="84" r="10" fill="#0f172a" stroke="#10b981" stroke-width="4"/>
+  <circle cx="94" cy="84" r="4" fill="#10b981"/>
+  
+  <!-- Center relay packet -->
+  <g transform="translate(48, 36)">
+    <rect x="0" y="0" width="32" height="26" rx="5" fill="#1e293b" stroke="#f8fafc" stroke-width="2"/>
+    <path d="M 2 4 L 16 16 L 30 4" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+    <line x1="8" y1="18" x2="18" y2="18" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -37,8 +37,14 @@ class CodexCliRunner(BaseRunner):
         if not workspace.is_dir():
             raise RunnerError(f"Workspace directory does not exist: {workspace}")
 
+        prompt = (
+            f"Implement the requirements described in task file {task.file_path.resolve()} "
+            f"strictly inside workspace {workspace.resolve()}. "
+            "Run existing tests to verify your changes and report modified files."
+        )
+
         binary = shutil.which("codex") or "codex"
-        command = [binary, "exec", "--task-file", str(task.file_path.resolve())]
+        command = [binary, "exec", prompt]
 
         start_dt = dt.datetime.now(dt.timezone.utc)
         start_iso = start_dt.isoformat(timespec="seconds")

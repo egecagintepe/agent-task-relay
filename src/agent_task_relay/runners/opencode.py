@@ -37,8 +37,13 @@ class OpenCodeRunner(BaseRunner):
         if not workspace.is_dir():
             raise RunnerError(f"Workspace directory does not exist: {workspace}")
 
+        prompt = (
+            f"Implement the task described in {task.file_path.resolve()} "
+            f"strictly inside workspace {workspace.resolve()}."
+        )
+
         binary = shutil.which("opencode") or "opencode"
-        command = [binary, "run", "--instruction-file", str(task.file_path.resolve())]
+        command = [binary, "run", prompt]
 
         start_dt = dt.datetime.now(dt.timezone.utc)
         start_iso = start_dt.isoformat(timespec="seconds")

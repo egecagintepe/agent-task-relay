@@ -54,6 +54,16 @@ class TestApproval(unittest.TestCase):
         self.assertIn("SECURITY ALERT", reason)
         self.assertIn("modified after approval", reason)
 
+    def test_legacy_record_without_sha_rejected(self):
+        # Legacy approval format without stored SHA-256 hash
+        from agent_task_relay.config import save_approved_tasks
+        save_approved_tasks(self.config_dir, {self.packet.task_id: {"sha256": "", "approved_at": ""}})
+
+        approved, reason = verify_task_approval(self.config_dir, self.packet, approval_mode="manual")
+        self.assertFalse(approved)
+        self.assertIn("SECURITY ALERT", reason)
+        self.assertIn("legacy format without a content SHA-256 hash", reason)
+
     def test_auto_approval_mode(self):
         approved, reason = verify_task_approval(self.config_dir, self.packet, approval_mode="auto")
         self.assertTrue(approved)

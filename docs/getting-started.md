@@ -30,12 +30,17 @@ Agent Task Relay uses a dedicated, private Git repository as an asynchronous tas
 
 ### Step 2: Install Agent Task Relay
 
-Install Agent Task Relay using standard Python packaging:
+Install directly from the GitHub repository:
 
 ```bash
-pip install agent-task-relay
-# or using pipx:
-pipx install agent-task-relay
+pip install git+https://github.com/egecagintepe/agent-task-relay.git
+```
+
+Or clone and install locally:
+```bash
+git clone https://github.com/egecagintepe/agent-task-relay.git
+cd agent-task-relay
+pip install .
 ```
 
 Verify installation:

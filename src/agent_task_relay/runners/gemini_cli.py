@@ -38,13 +38,13 @@ class GeminiCliRunner(BaseRunner):
             raise RunnerError(f"Workspace directory does not exist: {workspace}")
 
         prompt = (
-            f"Read the task packet at {task.file_path.resolve()}. "
-            f"Implement the requested changes in workspace {workspace.resolve()}. "
-            "Do not modify files outside this workspace."
+            f"Read the task packet at {task.file_path.resolve()} and implement "
+            f"the requested changes strictly within workspace {workspace.resolve()}. "
+            "Run existing tests if available and summarize changed files."
         )
 
         binary = shutil.which("gemini") or "gemini"
-        command = [binary, "code", "--prompt", prompt]
+        command = [binary, "-p", prompt]
 
         start_dt = dt.datetime.now(dt.timezone.utc)
         start_iso = start_dt.isoformat(timespec="seconds")

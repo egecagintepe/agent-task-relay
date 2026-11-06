@@ -56,3 +56,6 @@ Changelog = "https://github.com/egecagintepe/agent-task-relay/blob/main/CHANGELO
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+"agent_task_relay" = ["packaged_skill/**/*", "packaged_skill/*"]

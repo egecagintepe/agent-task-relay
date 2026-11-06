@@ -210,6 +210,36 @@ class TestCliIntegration(unittest.TestCase):
         report = (self.bridge / "outbox" / f"{task_id}.result.md").read_text(encoding="utf-8")
         self.assertIn("Fake agy executed successfully", report)
 
+    def test_packaged_skill_installed_into_workspace(self):
+        installed_skill = self.workspace / ".agents" / "skills" / "agent-task-relay" / "SKILL.md"
+        self.assertTrue(installed_skill.is_file(), "Skill must be installed into workspace on init")
+
+    def test_git_push_diverged_conflict_recovery(self):
+        # Simulate local commit
+        local_file = self.bridge / "state" / "TASK-local.json"
+        local_file.write_text('{"status": "claimed"}\n', encoding="utf-8")
+        run_cmd(["git", "-C", str(self.bridge), "add", "state/TASK-local.json"])
+        run_cmd(["git", "-C", str(self.bridge), "commit", "-m", "local state commit"])
+
+        # Simulate concurrent remote commit in bare remote via a second clone
+        second_clone = self.root / "second_clone"
+        run_cmd(["git", "clone", str(self.remote), str(second_clone)])
+        run_cmd(["git", "-C", str(second_clone), "config", "user.name", "Remote User"])
+        run_cmd(["git", "-C", str(second_clone), "config", "user.email", "remote@test.local"])
+        (second_clone / "inbox" / "TASK-remote.md").write_text("# Remote task\n", encoding="utf-8")
+        run_cmd(["git", "-C", str(second_clone), "add", "inbox/TASK-remote.md"])
+        run_cmd(["git", "-C", str(second_clone), "commit", "-m", "concurrent remote task"])
+        run_cmd(["git", "-C", str(second_clone), "push"])
+
+        # Now test that bridge push recovers from diverged histories cleanly
+        from agent_task_relay.transport.git import GitRepo
+        repo = GitRepo(self.bridge)
+        repo.push()  # Should pull --rebase and push successfully!
+
+        # Verify both commits exist in remote
+        log_out = run_cmd(["git", "-C", str(self.bridge), "log", "-n", "2", "--oneline"]).stdout
+        self.assertIn("local state commit", log_out)
+
 
 if __name__ == "__main__":
     unittest.main()

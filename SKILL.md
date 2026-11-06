@@ -27,11 +27,13 @@ Use Agent Task Relay when a user wants an ordinary AI chat conversation (ChatGPT
    python --version
    git --version
    ```
-2. Install the package:
+2. Install the package directly from GitHub:
    ```bash
-   pip install agent-task-relay
-   # or with pipx:
-   pipx install agent-task-relay
+   pip install git+https://github.com/egecagintepe/agent-task-relay.git
+   ```
+   Or from a local clone:
+   ```bash
+   pip install .
    ```
 3. When using as an Agent Skill in compatible agents:
    ```bash

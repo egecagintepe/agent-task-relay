@@ -10,9 +10,9 @@ Agent Task Relay decouples task transport from coding agent execution. A variety
 | **Custom Command** | `custom` | **Verified** | Configured binary allowlist | Non-shell isolated process execution |
 | **Google Antigravity** | `agy` | **Experimental** | `agy` CLI in PATH + interactive login | `agy -p <prompt> --output-format json` |
 | **Claude Code** | `claude` | **Experimental** | `claude` CLI in PATH + Anthropic auth | `claude -p <prompt>` |
-| **Google Gemini CLI** | `gemini` | **Experimental** | `gemini` CLI in PATH + Google auth | `gemini code --prompt <prompt>` |
-| **OpenAI Codex CLI** | `codex` | **Contract** | Documented contract harness | `codex exec --task-file <file>` |
-| **OpenCode** | `opencode` | **Contract** | OpenCode CLI in PATH | `opencode run --instruction-file <file>` |
+| **Google Gemini CLI** | `gemini` | **Experimental** | `gemini` CLI in PATH + Google auth | `gemini -p <prompt>` |
+| **OpenAI Codex CLI** | `codex` | **Contract** | Documented contract harness | `codex exec <prompt>` |
+| **OpenCode** | `opencode` | **Contract** | OpenCode CLI in PATH | `opencode run <prompt>` |
 | **Local Agent Harness** | `local` | **Contract** | Agent wrapper CLI (e.g. Ollama harness) | Custom agent wrapper with tools & fs |
 
 > **Important Distinction:** A raw local language model (such as a bare `ollama` model endpoint) is **not** a coding agent. A coding agent requires an agent harness capable of reading files, modifying code, and using permitted tools.

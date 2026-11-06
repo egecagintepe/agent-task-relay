@@ -74,6 +74,18 @@ class GitRepo:
             args.append("--ff-only")
         run_git(args, timeout=timeout)
 
+    def pull_rebase(self, timeout: int = 60) -> None:
+        """Pull with rebase to cleanly replay local state commits on top of incoming remote tasks."""
+        try:
+            run_git(["-C", str(self.path), "pull", "--rebase"], timeout=timeout)
+        except TransportError as exc:
+            # Abort rebase cleanly if there is a conflict on the same file
+            try:
+                run_git(["-C", str(self.path), "rebase", "--abort"], timeout=30)
+            except Exception:
+                pass
+            raise TransportError(f"Git pull --rebase encountered conflicts and was aborted: {exc}") from exc
+
     def add(self, relative_paths: list[str]) -> None:
         if not relative_paths:
             return
@@ -89,7 +101,7 @@ class GitRepo:
             return
         run_git(["-C", str(self.path), "commit", "-m", message])
 
-    def push(self, retries: int = 1, timeout: int = 90) -> None:
+    def push(self, retries: int = 2, timeout: int = 90) -> None:
         last_error: Exception | None = None
         for attempt in range(retries + 1):
             try:
@@ -100,7 +112,8 @@ class GitRepo:
                 if attempt < retries:
                     time.sleep(1.0)
                     try:
-                        self.pull(ff_only=True)
-                    except TransportError:
-                        pass
+                        self.pull_rebase(timeout=timeout)
+                    except TransportError as pull_exc:
+                        last_error = pull_exc
+                        break
         raise TransportError(f"Failed to push changes to remote repository: {last_error}") from last_error

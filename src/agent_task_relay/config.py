@@ -203,10 +203,21 @@ def verify_task_approval(config_dir: Path, packet: TaskPacket, approval_mode: st
         return False, f"Task {packet.task_id} has not been approved. Run `approve {packet.task_id} --yes`."
 
     record = tasks[packet.task_id]
+    if not isinstance(record, dict):
+        return False, f"Invalid approval record format for {packet.task_id}. Re-run `approve {packet.task_id} --yes`."
+
     recorded_sha = record.get("sha256", "")
 
-    # If recorded hash exists, it MUST match the current packet hash!
-    if recorded_sha and recorded_sha != packet.sha256:
+    # Strict check: Approval MUST have a stored, non-empty cryptographic hash.
+    # Legacy approval records with empty SHA-256 are rejected.
+    if not recorded_sha:
+        return False, (
+            f"SECURITY ALERT: Task {packet.task_id} was approved under a legacy format without a content SHA-256 hash. "
+            f"To prevent execution of unverified content, re-review the task and run `approve {packet.task_id} --yes`."
+        )
+
+    # The recorded hash MUST match the current packet hash exactly
+    if recorded_sha != packet.sha256:
         return False, (
             f"SECURITY ALERT: Task {packet.task_id} content was modified after approval!\n"
             f"Approved SHA-256: {recorded_sha}\n"
