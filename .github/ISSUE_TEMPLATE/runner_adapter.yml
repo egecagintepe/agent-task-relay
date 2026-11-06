@@ -1,0 +1,33 @@
+name: Runner Adapter Proposal
+description: Propose or document an adapter for a new coding agent CLI
+labels: ["runner", "adapter"]
+body:
+  - type: input
+    id: runner_name
+    attributes:
+      label: Runner Name & CLI Binary
+      placeholder: e.g. OpenCode (opencode)
+    validations:
+      required: true
+  - type: input
+    id: runner_docs
+    attributes:
+      label: Official CLI Documentation / Source
+      placeholder: URL to official documentation or CLI repo
+    validations:
+      required: true
+  - type: textarea
+    id: invocation_syntax
+    attributes:
+      label: Non-interactive / Headless Invocation Command
+      description: Exact CLI command line for non-interactive execution with prompt or task file.
+      placeholder: e.g. `runner_cli -p "prompt" --output-format json`
+    validations:
+      required: true
+  - type: textarea
+    id: auth_and_permissions
+    attributes:
+      label: Authentication and Permission Model
+      description: How does the runner authenticate? How does it handle file modification approvals?
+    validations:
+      required: true

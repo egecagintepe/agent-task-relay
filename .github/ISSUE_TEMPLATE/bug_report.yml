@@ -1,0 +1,47 @@
+name: Bug Report
+description: Report an issue or unexpected behavior in Agent Task Relay
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting an issue! Please do not report security vulnerabilities here; consult [SECURITY.md](https://github.com/egecagintepe/agent-task-relay/blob/main/SECURITY.md) instead.
+  - type: input
+    id: version
+    attributes:
+      label: Agent Task Relay Version
+      description: Run `agent-task-relay --version` and paste output here.
+      placeholder: e.g. 0.2.0
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating System
+      options:
+        - Windows
+        - Linux (Ubuntu/Debian)
+        - Linux (Other)
+        - macOS
+    validations:
+      required: true
+  - type: input
+    id: runner
+    attributes:
+      label: Configured Runner
+      placeholder: e.g. mock, agy, claude, custom
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description of the Bug
+      description: What happened, and what did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Diagnostic Logs
+      description: Output from `agent-task-relay doctor` or relevant logs.
+      render: text
